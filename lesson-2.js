@@ -12,3 +12,16 @@ alert(b); // 3 - инкремент выполился два раза, пост
 var a = 2;
 var x = 1 + (a *= 2);
 // x = 5 , var x = 1 + (a = a * 2);
+
+//task 3
+var a = 5;
+var b = -55;
+if (a > 0 && b > 0) {
+    console.log(a-b)
+}
+else if (a < 0 && b < 0) {
+    console.log(a*b)
+}
+else{
+    console.log(a+b)
+}
