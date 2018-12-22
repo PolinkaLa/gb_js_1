@@ -77,3 +77,23 @@ function mult (a, b) {
 function div (a, b) {
     return a/b;
 }
+
+//task 6
+function mathOperation(arg1, arg2, operat) {
+    switch (operat) {
+        case 'summ':
+            console.log(summ(arg1, arg2));
+            break;
+        case 'diff':
+            console.log(diff(arg1, arg2));
+            break;
+        case 'mult':
+            console.log(mult(arg1, arg2));
+            break;
+        case 'div':
+            console.log(div(arg1, arg2));
+            break;
+        default:
+            console.log("Что-то пошло не так")
+    }
+}
