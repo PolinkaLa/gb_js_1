@@ -63,3 +63,17 @@ switch (a) {
     case 15:
         console.log(15);
 }
+
+//task 5
+function summ (a, b) {
+    return a + b;
+}
+function diff (a, b) {
+    return a - b;
+}
+function mult (a, b) {
+    return a * b;
+}
+function div (a, b) {
+    return a/b;
+}
