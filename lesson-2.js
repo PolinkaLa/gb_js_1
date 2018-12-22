@@ -97,3 +97,14 @@ function mathOperation(arg1, arg2, operat) {
             console.log("Что-то пошло не так")
     }
 }
+
+//task 7
+console.log(null == 0); // false
+console.log(null === 0); // false
+console.log(null > 0); // false
+console.log(null < 0); // false
+console.log(null >= 0); // true
+console.log(null <= 0); // true
+//Сравнение приводит к числу, получается ноль. 
+//А при проверке равенства значения null и undefined обрабатываются особым образом: 
+//они равны друг другу, но не равны чему-то ещё.
