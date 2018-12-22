@@ -65,17 +65,17 @@ switch (a) {
 }
 
 //task 5
-function summ (a, b) {
+function summ(a, b) {
     return a + b;
 }
-function diff (a, b) {
+function diff(a, b) {
     return a - b;
 }
-function mult (a, b) {
+function mult(a, b) {
     return a * b;
 }
-function div (a, b) {
-    return a/b;
+function div(a, b) {
+    return a / b;
 }
 
 //task 6
@@ -108,3 +108,12 @@ console.log(null <= 0); // true
 //Сравнение приводит к числу, получается ноль. 
 //А при проверке равенства значения null и undefined обрабатываются особым образом: 
 //они равны друг другу, но не равны чему-то ещё.
+
+//task 8
+function power(val, pow) {
+    if (pow != 1) {
+        return val * power(val, pow - 1);
+    } else {
+        return val;
+    }
+}
