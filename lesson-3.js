@@ -17,3 +17,17 @@ while (n <= 100) {
     }
     n++;
 }
+
+//task 2
+var m = 0;
+do {
+    if (m == 0){
+        console.log(m + " - это ноль");
+    } else if ((m%2)==0) {
+        console.log(m + " - это четное число ")
+    } else {
+        console.log(m + " - это нечетное число ")
+    }
+    m++;
+}
+while(m <= 10);
