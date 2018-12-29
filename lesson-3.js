@@ -34,3 +34,15 @@ while(m <= 10);
 
 //task 3
 for(var i = 0; i <= 9; console.log(i), i++) {};
+
+//task 4
+for(var i = 0; i < 19; i++){
+    var temp="X";
+    for(var j = 0; j <= i; j++) {
+        if (i==0) {
+            console.log(temp)
+        }
+        temp=temp+"X"
+    }
+    console.log(temp);
+}
