@@ -31,3 +31,6 @@ do {
     m++;
 }
 while(m <= 10);
+
+//task 3
+for(var i = 0; i <= 9; console.log(i), i++) {};
