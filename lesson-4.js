@@ -14,17 +14,22 @@ else {
 function parseNumber(arr) {
     
     if (arr.length <= 3) {
-        if (arr.length == 3) {
-            numObj.h = arr[0];
-            numObj.d = arr[1];
-            numObj.e = arr[2];
-        }
-        if (arr.length == 2) {
-            numObj.d = arr[0];
-            numObj.e = arr[1];
-        }
-        if (arr.length == 1) {
-            numObj.e = arr[0];
+
+        switch (arr.length) {
+            case 1:
+                numObj.e = arr[0];
+                break;
+            case 2: 
+                numObj.d = arr[0];
+                numObj.e = arr[1];
+                break;
+            case 3:
+                numObj.h = arr[0];
+                numObj.d = arr[1];
+                numObj.e = arr[2];
+                break;
+            default: 
+                alert("Ошибка");
         }
     }
     else {
