@@ -4,22 +4,29 @@
     .desk {
         display: flex;
         flex-direction: column;
-        border: 2px solid black;
         width: max-content;
     } 
     .row{
         display: flex;
         flex-direction: row;
     }
-    .black-cell {
+    .black {
         background: black;
+        outline:  1px solid black;
+    }
+    .white {
+        background: white;
+        outline:  1px solid black;
+    } 
+    .cell {
         width: 50px;
         height: 50px;
     }
-    .white-cell {
-        background: white;
-        width: 50px;
-        height: 50px;
+    p {
+        text-align: center;
+    }
+    .cell:last-child {
+        transform: rotate(180deg);
     }   
     </style>
     <title>Chess</title>
@@ -38,36 +45,56 @@
             var row = document.createElement("div");
             row.setAttribute('class', 'row');
             if (i%2 == 0) {
-                for (var j = 0; j<8; j++) {
-                    if (j%2 == 0){
-                        var cell = document.createElement("div");
-                        cell.setAttribute('class', 'white-cell');
-                        row.appendChild(cell);
+                for (var j = 0; j<10; j++) {
+                    if (j==0 || j==9) {
+                        createNum(i);
                     }
                     else {
-                        var cell = document.createElement("div");
-                        cell.setAttribute('class', 'black-cell');
-                        row.appendChild(cell);
+                        if (j%2 == 0){
+                            createWhiteCell ()
+                        }
+                        else {
+                            createBlackCell ()
+                        }
                     }
                 }
             }
             else {
-                for (var j = 0; j<8; j++) {
-                    if (j%2 == 0){
-                        var cell = document.createElement("div");
-                        cell.setAttribute('class', 'black-cell');
-                        row.appendChild(cell);
+                for (var j = 0; j<10; j++) {
+                    if (j==0 || j==9) {
+                        createNum(i)
                     }
                     else {
-                        var cell = document.createElement("div");
-                        cell.setAttribute('class', 'white-cell');
-                        row.appendChild(cell);
-                    }
+                        if (j%2 == 0){
+                            createBlackCell ()
+                        }
+                        else {
+                            createWhiteCell ()
+                        }
+                    } 
                 }
             }
             
             document.querySelector(".desk").appendChild(row)
             desk+=row
+        }
+        function createNum(i) {
+            var cellNum = document.createElement("div");
+            cellNum.setAttribute('class', 'cell');
+            p = document.createElement('p');
+            p.innerText = 8-i;
+            cellNum.appendChild(p);
+            row.appendChild(cellNum);
+        }
+        function createWhiteCell () {
+            var cell = document.createElement("div");
+            cell.setAttribute('class', 'white cell');
+            row.appendChild(cell);
+        }
+        function createBlackCell () {
+            var cell = document.createElement("div");
+            cell.setAttribute('class', 'black cell');
+            row.appendChild(cell);
         }
 
     </script>
