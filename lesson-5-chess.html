@@ -209,10 +209,66 @@
             if (i==7) { // ряд для пешек
                 p.innerHTML = '&#9817;'; // белая пешка
             }
+            else {
+                switch(j) {
+                    case 1:
+                    p.innerHTML = '&#9814;'; //слон
+                    break;
+                    case 2:
+                    p.innerHTML = '&#9816;'; //конь
+                    break;
+                    case 3:
+                    p.innerHTML = '&#9815;'; //ферзь
+                    break;
+                    case 4:
+                    p.innerHTML = '&#9813;'; // королева
+                    break;
+                    case 5:
+                    p.innerHTML = '&#9812;'; //король
+                    break;
+                    case 6:
+                    p.innerHTML = '&#9815;'; // ферзь
+                    break;
+                    case 7:
+                    p.innerHTML = '&#9816;'; //конь
+                    break;
+                    case 8:
+                    p.innerHTML = '&#9814;'; // слон
+                    break;
+                } 
+            }
         }
         function addBlackFigure(i, j, p) { // функция для добавления черных фигур
             if (i==2) { // ряд для пешек
                 p.innerHTML = '&#9823;'; // черная пешка 
+            }
+            else {
+                switch(j) {
+                    case 1:
+                    p.innerHTML = '&#9820;'; //слон
+                    break;
+                    case 2:
+                    p.innerHTML = '&#9822;'; //конь
+                    break;
+                    case 3:
+                    p.innerHTML = '&#9821;'; //ферзь
+                    break;
+                    case 4:
+                    p.innerHTML = '&#9819;'; // королева
+                    break;
+                    case 5:
+                    p.innerHTML = '&#9818;'; //король
+                    break;
+                    case 6:
+                    p.innerHTML = '&#9821;'; // ферзь
+                    break;
+                    case 7:
+                    p.innerHTML = '&#9822;'; //конь
+                    break;
+                    case 8:
+                    p.innerHTML = '&#9820;'; // слон
+                    break;
+                }
             }
             
         }
