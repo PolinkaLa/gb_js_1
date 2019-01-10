@@ -1,11 +1,75 @@
 <html lang="en">
 <head>
+    <style>
+    .desk {
+        display: flex;
+        flex-direction: column;
+        border: 2px solid black;
+        width: max-content;
+    } 
+    .row{
+        display: flex;
+        flex-direction: row;
+    }
+    .black-cell {
+        background: black;
+        width: 50px;
+        height: 50px;
+    }
+    .white-cell {
+        background: white;
+        width: 50px;
+        height: 50px;
+    }   
+    </style>
     <title>Chess</title>
 </head>
 <body>
-    
+
     <script>
-    
+
+        var desk = document.createElement("div");
+        desk.setAttribute('class', 'desk')
+        document.body.appendChild(desk);
+
+        var row = document.createElement("div");
+        row.setAttribute('class', 'row');
+        for (var i=0; i<8; i++) {
+            var row = document.createElement("div");
+            row.setAttribute('class', 'row');
+            if (i%2 == 0) {
+                for (var j = 0; j<8; j++) {
+                    if (j%2 == 0){
+                        var cell = document.createElement("div");
+                        cell.setAttribute('class', 'white-cell');
+                        row.appendChild(cell);
+                    }
+                    else {
+                        var cell = document.createElement("div");
+                        cell.setAttribute('class', 'black-cell');
+                        row.appendChild(cell);
+                    }
+                }
+            }
+            else {
+                for (var j = 0; j<8; j++) {
+                    if (j%2 == 0){
+                        var cell = document.createElement("div");
+                        cell.setAttribute('class', 'black-cell');
+                        row.appendChild(cell);
+                    }
+                    else {
+                        var cell = document.createElement("div");
+                        cell.setAttribute('class', 'white-cell');
+                        row.appendChild(cell);
+                    }
+                }
+            }
+            
+            document.querySelector(".desk").appendChild(row)
+            desk+=row
+        }
+
     </script>
 </body>
 </html>
