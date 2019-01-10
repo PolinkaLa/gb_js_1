@@ -27,6 +27,9 @@
     }
     .cell:last-child {
         transform: rotate(180deg);
+    }
+    .row:first-child .cell p {
+        transform: rotate(180deg);
     }   
     </style>
     <title>Chess</title>
@@ -41,40 +44,58 @@
 
         var row = document.createElement("div");
         row.setAttribute('class', 'row');
-        for (var i=0; i<8; i++) {
+        for (var i=0; i<10; i++) {
             var row = document.createElement("div");
             row.setAttribute('class', 'row');
-            if (i%2 == 0) {
-                for (var j = 0; j<10; j++) {
-                    if (j==0 || j==9) {
-                        createNum(i);
+            
+            if (i==0 || i==9) {
+                for (var m=0; m<10; m++){
+                    if (m==0 || m==9) {
+                        createCell();
                     }
                     else {
-                        if (j%2 == 0){
-                            createWhiteCell ()
+                        if (i==0) {
+                            createLetterRight(m)
                         }
                         else {
-                            createBlackCell ()
+                            createLetterLeft(m)
                         }
                     }
                 }
+
             }
             else {
-                for (var j = 0; j<10; j++) {
-                    if (j==0 || j==9) {
-                        createNum(i)
-                    }
-                    else {
-                        if (j%2 == 0){
-                            createBlackCell ()
+                if (i%2 == 0) {
+                    for (var j = 0; j<10; j++) {
+                        if (j==0 || j==9) {
+                            createNum(i);
                         }
                         else {
-                            createWhiteCell ()
+                            if (j%2 == 0){
+                                createWhiteCell ()
+                            }
+                            else {
+                                createBlackCell ()
+                            }
                         }
-                    } 
+                    }
                 }
+                else {
+                    for (var j = 0; j<10; j++) {
+                        if (j==0 || j==9) {
+                            createNum(i)
+                        }
+                        else {
+                            if (j%2 == 0){
+                                createBlackCell ()
+                            }
+                            else {
+                                createWhiteCell ()
+                            }
+                        } 
+                    }
+                }    
             }
-            
             document.querySelector(".desk").appendChild(row)
             desk+=row
         }
@@ -95,6 +116,77 @@
             var cell = document.createElement("div");
             cell.setAttribute('class', 'black cell');
             row.appendChild(cell);
+        }
+        function createCell () {
+            var cell = document.createElement("div");
+            cell.setAttribute('class', 'cell');
+            row.appendChild(cell);
+        }
+        function createLetterLeft(i) {
+            var cellNum = document.createElement("div");
+            cellNum.setAttribute('class', 'cell');
+            p = document.createElement('p');
+            switch(i) {
+                case 1:
+                    p.innerText = 'a';
+                    break;
+                case 2:
+                    p.innerText = 'b';
+                    break;
+                case 3:
+                    p.innerText = 'c';
+                    break;
+                case 4:
+                    p.innerText = 'd';
+                    break;
+                case 5:
+                    p.innerText = 'e';
+                    break;
+                case 6:
+                    p.innerText = 'f';
+                    break;
+                case 7:
+                    p.innerText = 'g';
+                    break;
+                case 8:
+                    p.innerText = 'h';
+                    break;
+            }
+            cellNum.appendChild(p);
+            row.appendChild(cellNum);
+        }
+        function createLetterRight(i) {
+            var cellNum = document.createElement("div");
+            cellNum.setAttribute('class', 'cell');
+            p = document.createElement('p');
+            switch(i) {
+                case 1:
+                    p.innerText = 'h';
+                    break;
+                case 2:
+                    p.innerText = 'g';
+                    break;
+                case 3:
+                    p.innerText = 'f';
+                    break;
+                case 4:
+                    p.innerText = 'e';
+                    break;
+                case 5:
+                    p.innerText = 'd';
+                    break;
+                case 6:
+                    p.innerText = 'c';
+                    break;
+                case 7:
+                    p.innerText = 'b';
+                    break;
+                case 8:
+                    p.innerText = 'a';
+                    break;
+            }
+            cellNum.appendChild(p);
+            row.appendChild(cellNum);
         }
 
     </script>
