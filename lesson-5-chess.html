@@ -40,25 +40,23 @@
 
         var desk = document.createElement("div");
         desk.setAttribute('class', 'desk')
-        document.body.appendChild(desk);
+        document.body.appendChild(desk); // блок с доской
 
-        var row = document.createElement("div");
-        row.setAttribute('class', 'row');
-        for (var i=0; i<10; i++) {
-            var row = document.createElement("div");
+        for (var i=0; i<10; i++) { // цикл для добавления строк
+            var row = document.createElement("div"); 
             row.setAttribute('class', 'row');
             
             if (i==0 || i==9) {
                 for (var m=0; m<10; m++){
                     if (m==0 || m==9) {
-                        createCell();
+                        createCell(); // создаем пустые ячейки по краям
                     }
                     else {
                         if (i==0) {
-                            createLetterRight(m)
+                            createLetterRight(m) // добавление букв сверху - справа налево
                         }
                         else {
-                            createLetterLeft(m)
+                            createLetterLeft(m) // добавление букв снизу - слево направо
                         }
                     }
                 }
@@ -66,31 +64,31 @@
             }
             else {
                 if (i%2 == 0) {
-                    for (var j = 0; j<10; j++) {
+                    for (var j = 0; j<10; j++) { // цикл для добавленяи ячеек
                         if (j==0 || j==9) {
-                            createNum(i);
+                            createNum(i); // добавление цифр в первом и последнем столбце
                         }
                         else {
                             if (j%2 == 0){
-                                createWhiteCell (i, j)
+                                createWhiteCell (i, j) // создание белых ячеек
                             }
                             else {
-                                createBlackCell (i, j)
+                                createBlackCell (i, j) // создание черных ячеек
                             }
                         }
                     }
                 }
-                else {
-                    for (var j = 0; j<10; j++) {
+                else { // для чередование цветов в шахматном порядке
+                    for (var j = 0; j<10; j++) { // цикл для добавленяи ячеек
                         if (j==0 || j==9) {
-                            createNum(i)
+                            createNum(i) // добавление цифр в первом и последнем столбце
                         }
                         else {
                             if (j%2 == 0){
-                                createBlackCell (i, j)
+                                createBlackCell (i, j) // создание черных ячеек
                             }
                             else {
-                                createWhiteCell (i, j)
+                                createWhiteCell (i, j) // создание белых ячеек
                             }
                         } 
                     }
@@ -99,46 +97,48 @@
             document.querySelector(".desk").appendChild(row)
             desk+=row
         }
-        function createNum(i) {
+
+        function createNum(i) { // функция для добавления ячеек с номером строки
             var cellNum = document.createElement("div");
             cellNum.setAttribute('class', 'cell');
             var p = document.createElement('p');
-            p.innerText = 8-i;
+            p.innerText = 9-i;
             cellNum.appendChild(p);
             row.appendChild(cellNum);
         }
-        function createWhiteCell (i, j) {
+
+        function createWhiteCell (i, j) { // функция для добавления белых ячеек
             var cell = document.createElement("div");
             cell.setAttribute('class', 'white cell');
             var p = document.createElement('p');
-            if ( (j>=1 && j<=8) && (i==1 || i==2) ) {
+            if ( (j>=1 && j<=8) && (i==1 || i==2) ) { // проверка положения фигур
                 addBlackFigure(i, j, p) 
             }
-            if ( (j>=1 && j<=8) && (i==7 || i==8) ) {
+            if ( (j>=1 && j<=8) && (i==7 || i==8) ) { // проверка положения фигур
                 addWhiteFigure(i, j, p) 
             }
             cell.appendChild(p);
             row.appendChild(cell);
         }
-        function createBlackCell (i, j) {
+        function createBlackCell (i, j) { // функция для добавления черных ячеек
             var cell = document.createElement("div");
             cell.setAttribute('class', 'black cell');
             var p = document.createElement('p');
-            if ( (j>=1 && j<=8) && (i==1 || i==2) ) {
+            if ( (j>=1 && j<=8) && (i==1 || i==2) ) { // проверка положения фигур
                 addBlackFigure(i, j, p) 
             }
-            if ( (j>=1 && j<=8) && (i==7 || i==8) ) {
+            if ( (j>=1 && j<=8) && (i==7 || i==8) ) { // проверка положения фигур
                 addWhiteFigure(i, j, p) 
             }
             cell.appendChild(p)
             row.appendChild(cell);
         }
-        function createCell () {
+        function createCell () { // функция для добавления пустых ячеек
             var cell = document.createElement("div");
             cell.setAttribute('class', 'cell');
             row.appendChild(cell);
         }
-        function createLetterLeft(i) {
+        function createLetterLeft(i) { // функция для добавления букв
             var cellNum = document.createElement("div");
             cellNum.setAttribute('class', 'cell');
             var p = document.createElement('p');
@@ -171,7 +171,7 @@
             cellNum.appendChild(p);
             row.appendChild(cellNum);
         }
-        function createLetterRight(i) {
+        function createLetterRight(i) { // функция для добавления букв в обратном порядке
             var cellNum = document.createElement("div");
             cellNum.setAttribute('class', 'cell');
             var p = document.createElement('p');
@@ -205,13 +205,13 @@
             row.appendChild(cellNum);
         }
         
-        function addWhiteFigure(i, j, p) {
-            if (i==7) {
+        function addWhiteFigure(i, j, p) { // функция для добавления белых фигур
+            if (i==7) { // ряд для пешек
                 p.innerHTML = '&#9817;'; // белая пешка
             }
         }
-        function addBlackFigure(i, j, p) {
-            if (i==2) {
+        function addBlackFigure(i, j, p) { // функция для добавления черных фигур
+            if (i==2) { // ряд для пешек
                 p.innerHTML = '&#9823;'; // черная пешка 
             }
             
