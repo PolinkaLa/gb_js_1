@@ -1,0 +1,283 @@
+<html lang="en">
+<head>
+    <style>
+    .desk {
+        display: flex;
+        flex-direction: column;
+        width: max-content;
+    } 
+    .row{
+        display: flex;
+        flex-direction: row;
+    }
+    .black {
+        background: gray;
+        outline:  1px solid gray;
+    }
+    .white {
+        background: white;
+        outline:  1px solid gray;
+    } 
+    .cell {
+        width: 70px;
+        height: 70px;
+    }
+    p {
+        text-align: center;
+        text-align: center;
+        font-size: xx-large;
+        margin-top: 0px;
+        margin-bottom: 0px;
+        padding-top: 10px;
+    }
+    .cell:last-child {
+        transform: rotate(180deg);
+    }
+    .row:first-child .cell p {
+        transform: rotate(180deg);
+    }   
+    </style>
+    <title>Chess</title>
+</head>
+<body>
+
+    <script>
+
+        var desk = document.createElement("div");
+        desk.setAttribute('class', 'desk')
+        document.body.appendChild(desk); // блок с доской
+
+        for (var i=0; i<10; i++) { // цикл для добавления строк
+            var row = document.createElement("div"); 
+            row.setAttribute('class', 'row');
+            
+            if (i==0 || i==9) {
+                for (var m=0; m<10; m++){
+                    if (m==0 || m==9) {
+                        createCell(); // создаем пустые ячейки по краям
+                    }
+                    else {
+                        if (i==0) {
+                            createLetterRight(m) // добавление букв сверху - справа налево
+                        }
+                        else {
+                            createLetterLeft(m) // добавление букв снизу - слево направо
+                        }
+                    }
+                }
+
+            }
+            else {
+                if (i%2 == 0) {
+                    for (var j = 0; j<10; j++) { // цикл для добавленяи ячеек
+                        if (j==0 || j==9) {
+                            createNum(i); // добавление цифр в первом и последнем столбце
+                        }
+                        else {
+                            if (j%2 == 0){
+                                createWhiteCell (i, j) // создание белых ячеек
+                            }
+                            else {
+                                createBlackCell (i, j) // создание черных ячеек
+                            }
+                        }
+                    }
+                }
+                else { // для чередование цветов в шахматном порядке
+                    for (var j = 0; j<10; j++) { // цикл для добавленяи ячеек
+                        if (j==0 || j==9) {
+                            createNum(i) // добавление цифр в первом и последнем столбце
+                        }
+                        else {
+                            if (j%2 == 0){
+                                createBlackCell (i, j) // создание черных ячеек
+                            }
+                            else {
+                                createWhiteCell (i, j) // создание белых ячеек
+                            }
+                        } 
+                    }
+                }    
+            }
+            document.querySelector(".desk").appendChild(row)
+            desk+=row
+        }
+
+        function createNum(i) { // функция для добавления ячеек с номером строки
+            var cellNum = document.createElement("div");
+            cellNum.setAttribute('class', 'cell');
+            var p = document.createElement('p');
+            p.innerText = 9-i;
+            cellNum.appendChild(p);
+            row.appendChild(cellNum);
+        }
+
+        function createWhiteCell (i, j) { // функция для добавления белых ячеек
+            var cell = document.createElement("div");
+            cell.setAttribute('class', 'white cell');
+            var p = document.createElement('p');
+            if ( (j>=1 && j<=8) && (i==1 || i==2) ) { // проверка положения фигур
+                addBlackFigure(i, j, p) 
+            }
+            if ( (j>=1 && j<=8) && (i==7 || i==8) ) { // проверка положения фигур
+                addWhiteFigure(i, j, p) 
+            }
+            cell.appendChild(p);
+            row.appendChild(cell);
+        }
+        function createBlackCell (i, j) { // функция для добавления черных ячеек
+            var cell = document.createElement("div");
+            cell.setAttribute('class', 'black cell');
+            var p = document.createElement('p');
+            if ( (j>=1 && j<=8) && (i==1 || i==2) ) { // проверка положения фигур
+                addBlackFigure(i, j, p) 
+            }
+            if ( (j>=1 && j<=8) && (i==7 || i==8) ) { // проверка положения фигур
+                addWhiteFigure(i, j, p) 
+            }
+            cell.appendChild(p)
+            row.appendChild(cell);
+        }
+        function createCell () { // функция для добавления пустых ячеек
+            var cell = document.createElement("div");
+            cell.setAttribute('class', 'cell');
+            row.appendChild(cell);
+        }
+        function createLetterLeft(i) { // функция для добавления букв
+            var cellNum = document.createElement("div");
+            cellNum.setAttribute('class', 'cell');
+            var p = document.createElement('p');
+            switch(i) {
+                case 1:
+                    p.innerText = 'a';
+                    break;
+                case 2:
+                    p.innerText = 'b';
+                    break;
+                case 3:
+                    p.innerText = 'c';
+                    break;
+                case 4:
+                    p.innerText = 'd';
+                    break;
+                case 5:
+                    p.innerText = 'e';
+                    break;
+                case 6:
+                    p.innerText = 'f';
+                    break;
+                case 7:
+                    p.innerText = 'g';
+                    break;
+                case 8:
+                    p.innerText = 'h';
+                    break;
+            }
+            cellNum.appendChild(p);
+            row.appendChild(cellNum);
+        }
+        function createLetterRight(i) { // функция для добавления букв в обратном порядке
+            var cellNum = document.createElement("div");
+            cellNum.setAttribute('class', 'cell');
+            var p = document.createElement('p');
+            switch(i) {
+                case 1:
+                    p.innerText = 'h';
+                    break;
+                case 2:
+                    p.innerText = 'g';
+                    break;
+                case 3:
+                    p.innerText = 'f';
+                    break;
+                case 4:
+                    p.innerText = 'e';
+                    break;
+                case 5:
+                    p.innerText = 'd';
+                    break;
+                case 6:
+                    p.innerText = 'c';
+                    break;
+                case 7:
+                    p.innerText = 'b';
+                    break;
+                case 8:
+                    p.innerText = 'a';
+                    break;
+            }
+            cellNum.appendChild(p);
+            row.appendChild(cellNum);
+        }
+        
+        function addWhiteFigure(i, j, p) { // функция для добавления белых фигур
+            if (i==7) { // ряд для пешек
+                p.innerHTML = '&#9817;'; // белая пешка
+            }
+            else {
+                switch(j) {
+                    case 1:
+                    p.innerHTML = '&#9814;'; //слон
+                    break;
+                    case 2:
+                    p.innerHTML = '&#9816;'; //конь
+                    break;
+                    case 3:
+                    p.innerHTML = '&#9815;'; //ферзь
+                    break;
+                    case 4:
+                    p.innerHTML = '&#9813;'; // королева
+                    break;
+                    case 5:
+                    p.innerHTML = '&#9812;'; //король
+                    break;
+                    case 6:
+                    p.innerHTML = '&#9815;'; // ферзь
+                    break;
+                    case 7:
+                    p.innerHTML = '&#9816;'; //конь
+                    break;
+                    case 8:
+                    p.innerHTML = '&#9814;'; // слон
+                    break;
+                } 
+            }
+        }
+        function addBlackFigure(i, j, p) { // функция для добавления черных фигур
+            if (i==2) { // ряд для пешек
+                p.innerHTML = '&#9823;'; // черная пешка 
+            }
+            else {
+                switch(j) {
+                    case 1:
+                    p.innerHTML = '&#9820;'; //слон
+                    break;
+                    case 2:
+                    p.innerHTML = '&#9822;'; //конь
+                    break;
+                    case 3:
+                    p.innerHTML = '&#9821;'; //ферзь
+                    break;
+                    case 4:
+                    p.innerHTML = '&#9819;'; // королева
+                    break;
+                    case 5:
+                    p.innerHTML = '&#9818;'; //король
+                    break;
+                    case 6:
+                    p.innerHTML = '&#9821;'; // ферзь
+                    break;
+                    case 7:
+                    p.innerHTML = '&#9822;'; //конь
+                    break;
+                    case 8:
+                    p.innerHTML = '&#9820;'; // слон
+                    break;
+                }
+            }
+            
+        }
+
+    </script>
+</body>
+</html>
