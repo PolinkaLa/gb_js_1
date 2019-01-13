@@ -95,8 +95,10 @@
                 title.innerText = item.name;
                 var col = document.createElement("div");
                 col.innerText = item.col;
+                col.id="col"+this.id
                 var totalCost = document.createElement("div");
                 totalCost.innerText = item.totalCost();
+                totalCost.id="totalCost"+this.id
                 row.appendChild(title);
                 row.appendChild(col);
                 row.appendChild(totalCost);
@@ -105,6 +107,9 @@
             else {
                 arrBag[this.id].col++;
                 console.log( arrBag[this.id].col);
+                document.getElementById("col"+this.id).innerText = arrBag[this.id].col;
+                document.getElementById("totalCost"+this.id).innerText = arrBag[this.id].totalCost();
+                
             }
             var summ = 0;
             for (var i = 0; i < arrBag.length; i++) {
