@@ -41,6 +41,7 @@
 <body>
     <div class="bag">
         <h2>Корзина</h2>
+        <div id="endSumm">0</div>
         <div class="row">
             <div>Товар</div>
             <div>Количество</div>
@@ -104,9 +105,12 @@
             else {
                 arrBag[this.id].col++;
                 console.log( arrBag[this.id].col);
-                
-
             }
+            var summ = 0;
+            for (var i = 0; i < arrBag.length; i++) {
+                summ +=arrBag[i].totalCost();
+            };
+            document.getElementById("endSumm").innerText = summ;
         }
         renderGoods();
     </script>
