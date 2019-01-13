@@ -10,6 +10,13 @@
             text-align: center;
             outline: 1px solid seagreen;
         }
+        .row {
+            display: flex;
+            margin-bottom: 8px
+        }
+        .row div {
+            margin-right: 10px;
+        }
         .goods {
             display: flex;
             flex-direction: row;
@@ -34,6 +41,11 @@
 <body>
     <div class="bag">
         <h2>Корзина</h2>
+        <div class="row">
+            <div>Товар</div>
+            <div>Количество</div>
+            <div>Сумма</div>
+        </div>
     </div>
     <div class="goods">
     </div>
@@ -51,12 +63,49 @@
                 var cost = document.createElement('p');
                 cost.innerText = goods[i].cost;
                 var btn = document.createElement('button');
-                btn.innerText = "купить"
+                btn.innerText = "купить";
+                btn.id = i;
+                btn.onclick = addToBag;
                 goodItem.appendChild(name);
                 goodItem.appendChild(image);
                 goodItem.appendChild(cost);
                 goodItem.appendChild(btn);
                 goodsContainer.appendChild(goodItem);
+            }
+        }
+
+        var arrBag = [];
+        var bag = document.querySelector(".bag");
+        function addToBag () {
+            var item; 
+            if (arrBag[this.id] == null){
+                item = {
+                    name: goods[this.id].name,
+                    cost: goods[this.id].cost,
+                    col: 1,
+                    totalCost: () => {
+                                    return item.col * item.cost
+                                } 
+                }
+                arrBag[this.id] = item;
+                var row = document.createElement("div");
+                row.className = "row";
+                var title = document.createElement("div");
+                title.innerText = item.name;
+                var col = document.createElement("div");
+                col.innerText = item.col;
+                var totalCost = document.createElement("div");
+                totalCost.innerText = item.totalCost();
+                row.appendChild(title);
+                row.appendChild(col);
+                row.appendChild(totalCost);
+                bag.appendChild(row);
+            }
+            else {
+                arrBag[this.id].col++;
+                console.log( arrBag[this.id].col);
+                
+
             }
         }
         renderGoods();
