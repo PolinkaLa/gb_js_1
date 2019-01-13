@@ -10,22 +10,39 @@
             flex-direction: row;
             justify-content: space-around;
         }
+        .view{
+            display: flex;
+            flex-direction: row;
+            justify-content: center
+        }
     </style>
     <title>Галерея</title>
 </head>
 
 <body>
-    <script>
-
-    </script>
+    
     <div class="prev">
-        <div class="item" id=""><img src="" alt=""></div>
-        <div class="item" id=""><img src="" alt=""></div>
-        <div class="item" id=""><img src="" alt=""></div>
+        <div class="item" id="orhideya"><img src="sml-img/orhideya.jpg" alt=""></div>
+        <div class="item" id="salut"><img src="sml-img/salut.jpg" alt=""></div>
+        <div class="item" id="pizza"><img src="sml-img/pizza.jpg" alt=""></div>
     </div>
     <div class="view">
+        <img src="" alt="">
 
     </div>
+    <script>
+            var arr = document.querySelectorAll('.item');
+            var view = document.querySelector('.view');
+
+            for (var i = 0; i < arr.length; i++) {
+                arr[i].setAttribute('onClick', 'addClick(this.id)')
+            }
+
+            function addClick (param) {
+                var img = document.querySelector('.view img');
+                img.src = 'lg-img/'+param+'.jpg';
+            }
+        </script>
 
 </body>
 
