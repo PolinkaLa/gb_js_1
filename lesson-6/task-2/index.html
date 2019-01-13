@@ -1,0 +1,66 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .bag {
+            height: 40vh;
+            text-align: center;
+            outline: 1px solid seagreen;
+        }
+        .goods {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            outline: 1px solid seagreen;
+            margin-top: 8px;
+            padding-bottom: 8px
+        }
+        img {
+            width: 250px;
+            height: 220px;
+        }
+        .item {
+            text-align: center;
+        }
+        
+    </style>
+    <script src="goods.js"></script>
+    <title>Магазин</title>
+</head>
+
+<body>
+    <div class="bag">
+        <h2>Корзина</h2>
+    </div>
+    <div class="goods">
+    </div>
+
+    <script>
+        function renderGoods() {
+            var goodsContainer = document.querySelector(".goods");
+            for (var i = 0; i < goods.length; i++) {
+                var goodItem = document.createElement("div");
+                goodItem.className = "item";
+                var name = document.createElement('h2');
+                name.innerText = goods[i].name;
+                var image = document.createElement('img');
+                image.src = goods[i].img;
+                var cost = document.createElement('p');
+                cost.innerText = goods[i].cost;
+                var btn = document.createElement('button');
+                btn.innerText = "купить"
+                goodItem.appendChild(name);
+                goodItem.appendChild(image);
+                goodItem.appendChild(cost);
+                goodItem.appendChild(btn);
+                goodsContainer.appendChild(goodItem);
+            }
+        }
+        renderGoods();
+    </script>
+</body>
+
+</html>
