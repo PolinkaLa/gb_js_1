@@ -27,7 +27,7 @@
         <div class="item" id="pizza"><img src="sml-img/pizza.jpg" alt=""></div>
     </div>
     <div class="view">
-        <img src="" alt="">
+        <img src="lg-img/orhideya.jpg" alt="" onload="check(true)" onerror="check(false)">
 
     </div>
     <script>
@@ -41,6 +41,14 @@
             function addClick (param) {
                 var img = document.querySelector('.view img');
                 img.src = 'lg-img/'+param+'.jpg';
+            }
+            
+            function check (param ) {
+                if (param) {
+                }
+                else{
+                    alert("Ошибка")
+                }
             }
         </script>
 
