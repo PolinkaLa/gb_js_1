@@ -1,0 +1,84 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <style>
+        .prev {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+        }
+        .view{
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 20px;
+        }
+    </style>
+    <title>Галерея</title>
+</head>
+
+<body>
+    
+    <div class="prev">
+        <div class="item" id="orhideya"><img src="sml-img/orhideya.jpg" alt=""></div>
+        <div class="item" id="salut"><img src="sml-img/salut.jpg" alt=""></div>
+        <div class="item" id="pizza"><img src="sml-img/pizza.jpg" alt=""></div>
+    </div>
+    <div class="view">
+        <a href="#" onclick="prev()"><<</a>
+        <img src="lg-img/orhideya.jpg" alt="" onload="check(true)" onerror="check(false)" id=0>
+        <a href="#" onclick="next()">>></a>
+
+    </div>
+    <script>
+            var arr = document.querySelectorAll('.item');
+            var view = document.querySelector('.view');
+            var arrBigImg = [
+                "lg-img/orhideya.jpg",
+                "lg-img/salut.jpg"
+            ]
+
+            for (var i = 0; i < arr.length; i++) {
+                arr[i].setAttribute('onClick', 'addClick(this.id)')
+            }
+
+            function addClick (param) {
+                var img = document.querySelector('.view img');
+                var path = 'lg-img/'+param+'.jpg';
+                img.src = path;
+                for (var i = 0; i < arrBigImg.length; i++){
+                    if (path == arrBigImg[i]) {
+                        img.id = i;
+                        break;
+                    }
+                }
+            }
+            
+            function check (param ) {
+                if (param) {
+                }
+                else{
+                    alert("Ошибка")
+                }
+            }
+
+            function prev() {
+                var img = document.querySelector('.view img');
+                img.src = arrBigImg[img.id - 1];
+                img.id = img.id - 1;
+            }
+            function next() {
+                var img = document.querySelector('.view img');
+                var index = parseInt(img.id);
+                img.src = arrBigImg[index+1];
+                img.id = index+1;
+            }
+        </script>
+
+</body>
+
+</html>
