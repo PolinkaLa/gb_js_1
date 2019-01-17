@@ -252,7 +252,7 @@ function refreshGame() {
     location.reload();
 }
 
-// функция для обнолвения счета
+// функция для обновления счета
 function updateScore (score) {
     var scoreSpan = document.getElementById('score');
     scoreSpan.innerText = score;
