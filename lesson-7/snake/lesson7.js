@@ -207,6 +207,33 @@ function createFood() {
 }
 
 /**
+ * Создание препятствие
+ */
+function createBarrier() {
+    var barrierCreated = false;
+
+    while (!barrierCreated) { 
+        // рандом
+        var barrier_x = Math.floor(Math.random() * FIELD_SIZE_X);
+        var barrier_y = Math.floor(Math.random() * FIELD_SIZE_Y);
+
+        var barrier_cell = document.getElementsByClassName('cell-' + food_y + '-' + food_x)[0];
+        var barrier_cell_classes = food_cell.getAttribute('class').split(' ');
+
+        // проверка на змейку и еду
+        if (!barrier_cell_classes.includes('snake-unit') && !barrier_cell_classes.includes('food-unit')) {
+            var classes = '';
+            for (var i = 0; i < barrier_cell_classes.length; i++) {
+                classes += barrier_cell_classes[i] + ' ';
+            }
+
+            barrier_cell.setAttribute('class', classes + 'barrier-unit');
+            barrierCreated = true;
+        }
+    }
+}
+
+/**
  * Изменение направления движения змейки
  * @param e - событие
  */
