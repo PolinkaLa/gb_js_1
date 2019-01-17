@@ -153,6 +153,9 @@ function move() {
             // удаляем хвост
             removed.setAttribute('class', classes[0] + ' ' + classes[1]);
         }
+        if(isBarrier(new_unit)){
+            finishTheGame();
+        }
     }
     else {
         finishTheGame();
@@ -186,9 +189,20 @@ function haveFood(unit) {
     if (unit_classes.includes('food-unit')) {
         check = true;
         createFood();
+        createBarrier();
 
         score++;
         updateScore(score); // обновления счета в реальном режиме
+    }
+    return check;
+}
+
+function isBarrier (unit) {
+    var check = false;
+    var unit_classes = unit.getAttribute('class').split(' ');
+
+    if (unit_classes.includes('barrier-unit')) {
+        check = true;
     }
     return check;
 }
@@ -231,8 +245,8 @@ function createBarrier() {
         var barrier_x = Math.floor(Math.random() * FIELD_SIZE_X);
         var barrier_y = Math.floor(Math.random() * FIELD_SIZE_Y);
 
-        var barrier_cell = document.getElementsByClassName('cell-' + food_y + '-' + food_x)[0];
-        var barrier_cell_classes = food_cell.getAttribute('class').split(' ');
+        var barrier_cell = document.getElementsByClassName('cell-' + barrier_y + '-' + barrier_x)[0];
+        var barrier_cell_classes = barrier_cell.getAttribute('class').split(' ');
 
         // проверка на змейку и еду
         if (!barrier_cell_classes.includes('snake-unit') && !barrier_cell_classes.includes('food-unit')) {
