@@ -174,6 +174,7 @@ function haveFood(unit) {
         createFood();
 
         score++;
+        updateScore(score); // обновления счета в реальном режиме
     }
     return check;
 }
@@ -249,6 +250,12 @@ function finishTheGame() {
  */
 function refreshGame() {
     location.reload();
+}
+
+// функция для обнолвения счета
+function updateScore (score) {
+    var scoreSpan = document.getElementById('score');
+    scoreSpan.innerText = score;
 }
 
 // Инициализация
