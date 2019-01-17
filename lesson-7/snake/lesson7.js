@@ -68,6 +68,7 @@ function startGame() {
 
     snake_timer = setInterval(move, SNAKE_SPEED);//каждые 200мс запускаем функцию move
     setTimeout(createFood, 5000);
+    setTimeout(clearBarrier, 20000)
 }
 
 /**
@@ -311,6 +312,14 @@ function refreshGame() {
 function updateScore (score) {
     var scoreSpan = document.getElementById('score');
     scoreSpan.innerText = score;
+}
+
+// функция для очистки барьеров
+function clearBarrier () {
+    var barriers = document.querySelectorAll('td.barrier-unit');
+    for (var i = 0; i < barriers.length; i++){
+        barriers[i].classList.remove("barrier-unit");
+    }
 }
 
 // Инициализация
