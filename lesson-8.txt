@@ -1,0 +1,5 @@
+2)  1 - undefined
+    2 - ничего
+    3 - function a(x) {return x * 2;}
+    4 - 3
+    5 - Window
